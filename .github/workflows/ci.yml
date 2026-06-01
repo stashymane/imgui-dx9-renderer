@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
-        target: [ x86_64-pc-windows-gnu x86_64-pc-windows-gnu ]
+        target: [ x86_64-pc-windows-gnu, x86_64-pc-windows-gnu ]
         profile: [ dev ] # release
 
     runs-on: ${{ matrix.os }}

@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
-        target: [ x86_64-pc-windows-gnu ]
+        target: [ x86_64-pc-windows-gnu x86_64-pc-windows-gnu ]
         profile: [ dev ] # release
 
     runs-on: ${{ matrix.os }}
@@ -22,6 +22,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends gcc-mingw-w64-i686
         if: matrix.os == 'ubuntu-latest' && matrix.target == 'i686-pc-windows-gnu'
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends gcc-mingw-w64-x86-64
+        if: matrix.os == 'ubuntu-latest' && matrix.target == 'x86_64-pc-windows-gnu'
 
       - uses: actions/checkout@v6
 
